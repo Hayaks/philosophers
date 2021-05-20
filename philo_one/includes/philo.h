@@ -20,10 +20,10 @@ typedef struct	s_info
 	int				nb_eat;
 }				t_info;
 
-int				malloc_info(t_info *info, int ac, char **av);
+t_info			*malloc_info(int ac, char **av);
 int				set_info(t_info *info);
 int				ft_atoi(const char *str);
 size_t			ft_strlen(const char *str);
 int				ft_error(t_info *info, char *str);
-void			ft_free_push(t_info *info);
+void			free_push(t_info *info);
 #endif

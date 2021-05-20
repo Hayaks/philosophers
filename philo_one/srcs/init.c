@@ -17,8 +17,12 @@ int     set_info(t_info *info)
 	return (0);
 }
 
-int		malloc_info(t_info *info, int ac, char **av)
+t_info	*malloc_info(int ac, char **av)
 {
+	t_info    *info;
+
+	info = NULL;
+	info = (t_info*)malloc(sizeof(t_info));
 	info->ac = ac;
 	info->av = av;
 	info->time = 0;
@@ -27,5 +31,5 @@ int		malloc_info(t_info *info, int ac, char **av)
 	info->t_eat = 0;
 	info->t_sleep = 0;
 	info->nb_eat = 0;
-	return (0);
+	return (info);
 }
