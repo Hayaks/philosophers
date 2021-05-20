@@ -12,7 +12,7 @@ typedef struct	s_info
 	int				ac;
 	char			**av;
 	int				wesh;
-	int             time;
+	long			time;
 	int				nb_philo;
 	int				t_die;
 	int				t_eat;
