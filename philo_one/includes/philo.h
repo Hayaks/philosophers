@@ -11,6 +11,7 @@ typedef struct	s_info
 {
 	int				ac;
 	char			**av;
+	int				wesh;
 	int             time;
 	int				nb_philo;
 	int				t_die;
@@ -19,7 +20,7 @@ typedef struct	s_info
 	int				nb_eat;
 }				t_info;
 
-t_info 			*malloc_info(int ac, char **av);
+int				malloc_info(t_info *info, int ac, char **av);
 int				set_info(t_info *info);
 int				ft_atoi(const char *str);
 size_t			ft_strlen(const char *str);

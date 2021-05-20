@@ -2,7 +2,8 @@
 
 void	ft_free_push(t_info *info)
 {
-	free(info);
+	if (info)
+		free(info);
 }
 
 int	ft_error(t_info *info, char *str)
