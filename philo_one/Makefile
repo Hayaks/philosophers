@@ -2,7 +2,7 @@ NAME			= philo_one
 
 HEADER			= -I includes/
 
-SRCS			= main.c init.c utils.c
+SRCS			= main.c init.c utils.c exit.c
 
 FOLDER			= $(addprefix srcs/, $(SRCS))
 
