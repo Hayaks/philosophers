@@ -23,6 +23,8 @@ t_info	*malloc_info(int ac, char **av)
 
 	info = NULL;
 	info = (t_info*)malloc(sizeof(t_info));
+	if (!info)
+		return NULL;
 	info->ac = ac;
 	info->av = av;
 	info->time = 0;
