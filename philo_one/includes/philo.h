@@ -11,14 +11,20 @@ typedef struct	s_info
 {
 	int				ac;
 	char			**av;
-	int				wesh;
 	long			time;
 	int				nb_philo;
 	int				t_die;
 	int				t_eat;
 	int				t_sleep;
 	int				nb_eat;
+	t_philosopher	*philo;
+	pthread_mutex_t	*fork;
 }				t_info;
+
+typedef struct	s_philosopher
+{
+	int				ac;
+}				t_philosopher;
 
 t_info			*malloc_info(int ac, char **av);
 int				set_info(t_info *info);

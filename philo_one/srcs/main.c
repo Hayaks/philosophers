@@ -12,5 +12,6 @@ int main(int ac, char **av)
 		return (ft_error(info, "Error: wrong numbers of arguments \n"));
 	if (set_info(info))
 		return (1);
+    info->philo
 	free_push(info);
 }

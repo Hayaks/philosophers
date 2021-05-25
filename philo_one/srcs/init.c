@@ -33,5 +33,6 @@ t_info	*malloc_info(int ac, char **av)
 	info->t_eat = 0;
 	info->t_sleep = 0;
 	info->nb_eat = 0;
+	info->philo = NULL;
 	return (info);
 }
