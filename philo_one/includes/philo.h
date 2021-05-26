@@ -16,7 +16,7 @@ typedef struct	s_info
 	int				t_die;
 	int				t_eat;
 	int				t_sleep;
-	int				nb_eat;
+	int				nb_eat_max;
 	t_philosopher	*philo;
 	pthread_mutex_t	message;
 	pthread_mutex_t	end;
@@ -25,13 +25,23 @@ typedef struct	s_info
 
 typedef struct	s_philosopher
 {
-	int				ac;
+	int				id;
+	int				t_die;
+	int				t_eat;
+	int				t_sleep;
+	int				nb_eat;
+	int				nb_eat_max;
+	long			last_eat;
+	long			time;
+	pthread_mutex_t	*fork_right;
+	pthread_mutex_t	*fork_left;
 }				t_philosopher;
 
 int				set_thread(t_info *info);
 int				set_mutex(t_info *info);
 t_info			*malloc_info(int ac, char **av);
 int				set_info(t_info *info);
+int				set_philo(t_info *info);
 int				ft_atoi(const char *str);
 size_t			ft_strlen(const char *str);
 int				ft_error(t_info *info, char *str);

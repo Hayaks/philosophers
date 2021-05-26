@@ -2,7 +2,28 @@
 
 int	set_thread(t_info *info)
 {
-	
+	pthread_t	id;
+	int			i;
+
+	i = 0;
+	while (i < info->nb_philo)
+	{
+		usleep(50);
+		if (pthread_create(&id, NULL, &philo_life, &info->philo[i]))
+			return (1);
+		pthread_detach(id);
+		i = i + 2;
+	}
+	i = 1;
+	while (i < info->nb_philo)
+	{
+		usleep(50);
+		if (pthread_create(&id, NULL, &philo_life, &info->philo[i]))
+			return (1);
+		pthread_detach(id);
+		i = i + 2;
+	}
+	return (0);
 }
 
 int	set_mutex(t_info *info)
@@ -39,11 +60,12 @@ int main(int ac, char **av)
 		return (ft_error(info, "Error: mauvais nombre d'arguments \n"));
 	if (set_info(info))
 		return (1);
+	if (set_mutex(info))
+		return (ft_error(info, "Error: Mutex \n"));
     info->philo = (info->philo*)malloc(sizeof(info->philo) * info->nb_philo);
 	if (!info->philo)
 		return (ft_error(info, "Error: malloc des philosophes \n"));
-	if (set_mutex(info))
-		return (ft_error(info, "Error: Mutex \n"));
+	set_philo(info);
 	if (set_thread(info))
 		return (ft_error(info, "Error: Thread \n"));
 	pthread_mutex_lock(&arg.end);
