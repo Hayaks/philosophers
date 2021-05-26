@@ -2,6 +2,10 @@
 
 void	free_push(t_info *info)
 {
+	if (info->fork)
+		free(info->fork);
+	if (info->philo)
+		free(info->philo);
 	if (info)
 		free(info);
 }

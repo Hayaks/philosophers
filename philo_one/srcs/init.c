@@ -2,7 +2,7 @@
 
 int     set_info(t_info *info)
 {
-	//info->time?
+	info->time = actual_time();
 	info->nb_philo = ft_atoi(info->av[1]);
 	info->t_die = ft_atoi(info->av[2]);
 	info->t_eat = ft_atoi(info->av[3]);
@@ -34,5 +34,7 @@ t_info	*malloc_info(int ac, char **av)
 	info->t_sleep = 0;
 	info->nb_eat = 0;
 	info->philo = NULL;
+	info->message = NULL;
+	info->end = NULL;
 	return (info);
 }
