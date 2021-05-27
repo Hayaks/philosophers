@@ -21,6 +21,7 @@ typedef struct	s_info
 	pthread_mutex_t	message;
 	pthread_mutex_t	end;
 	pthread_mutex_t	*fork;
+	pthread_t		id_monitor;
 }				t_info;
 
 typedef struct	s_philosopher

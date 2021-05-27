@@ -23,6 +23,9 @@ int	set_thread(t_info *info)
 		pthread_detach(id);
 		i = i + 2;
 	}
+	if (pthread_create(&info->id_monitor, NULL, &monitor, &info)
+			return (1);
+	pthread_detach(info->id_monitor);
 	return (0);
 }
 
