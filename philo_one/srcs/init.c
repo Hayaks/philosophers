@@ -21,10 +21,11 @@ int		set_philo(t_info *info, t_philosopher *philo)
 		else
 			philo[i]->fork_left = info->fork[0];
 		i++;
+		philo[i]->message = info->message;
 	}
 }
 
-int     set_info(t_info *info)
+int		set_info(t_info *info)
 {
 	info->time = actual_time();
 	info->nb_philo = ft_atoi(info->av[1]);

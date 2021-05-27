@@ -1,6 +1,13 @@
 #include "../includes/philo.h"
 
-long    actual_time(void)
+void	message_philo(t_philosopher *philo, char *str)
+{
+	pthread_mutex_lock(philo->message);
+	printf("%ld %d %s\n", (actual_time() - philo->time), philo->id, str);
+	pthread_mutex_unlock(philo->message);
+}
+
+long	actual_time(void)
 {
 	static struct timeval	time;
 

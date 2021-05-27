@@ -35,6 +35,7 @@ typedef struct	s_philosopher
 	long			time;
 	pthread_mutex_t	*fork_right;
 	pthread_mutex_t	*fork_left;
+	pthread_mutex_t	*message;
 }				t_philosopher;
 
 int				set_thread(t_info *info);
@@ -44,7 +45,10 @@ int				set_info(t_info *info);
 int				set_philo(t_info *info);
 int				ft_atoi(const char *str);
 size_t			ft_strlen(const char *str);
+int				ft_atoi(const char *str);
 int				ft_error(t_info *info, char *str);
 void			free_push(t_info *info);
 long			actual_time(void);
+void			message_philo(t_philosopher *philo, char *str);
+void			philo_life(void *philo);
 #endif
