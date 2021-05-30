@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_life.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/30 22:51:01 by jsaguez           #+#    #+#             */
+/*   Updated: 2021/05/30 23:40:29 by jsaguez          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
 void	philo_sleep_and_think(t_philosopher *philo)
@@ -14,10 +26,13 @@ void	philo_eat(t_philosopher *philo)
 	pthread_mutex_lock(philo->fork_left);
 	message_philo(philo, "as taken a fork");
 	message_philo(philo, "is eating");
+	philo->last_eat = actual_time();
 	philo->nb_eat++;
 	usleep(philo->t_eat * 1000);
 	pthread_mutex_unlock(philo->fork_right);
 	pthread_mutex_unlock(philo->fork_left);
+	if (philo->nb_eat != 1 && philo->nb_eat >= philo->nb_eat_max)
+		philo->full = 1;
 }
 
 void	philo_life(void *philo)

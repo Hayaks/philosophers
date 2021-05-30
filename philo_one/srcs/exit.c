@@ -1,4 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exit.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/30 22:50:54 by jsaguez           #+#    #+#             */
+/*   Updated: 2021/05/30 22:50:56 by jsaguez          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
+
+void	destroy_all_mutex(t_info *info)
+{
+	int	i;
+
+	i = 0;
+	pthread_mutex_destroy(info->message);
+	pthread_mutex_destroy(info->end);
+	while (i < arg.nb_philo)
+	{
+		pthread_mutex_destroy(info->fork[i]);
+		i++;
+	}
+}
 
 void	free_push(t_info *info)
 {

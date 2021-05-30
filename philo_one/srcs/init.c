@@ -1,28 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/30 22:51:07 by jsaguez           #+#    #+#             */
+/*   Updated: 2021/05/31 00:11:44 by jsaguez          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
-int		set_philo(t_info *info, t_philosopher *philo)
+void	set_philo(t_info *info, t_philosopher *philo, int i)
 {
-	int	i;
-
-	i = 0;
-	while (i < info->nb_philo)
-	{
 		philo[i]->id = i + 1;
 		philo[i]->t_die = info->t_die;
 		philo[i]->t_eat = info->t_eat;
 		philo[i]->t_sleep = info->t_sleep;
 		philo[i]->nb_eat = 0;
 		philo[i]->nb_eat_max = info->nb_eat_max;
-		philo[i]->fork_right = info->fork[i];
+		philo[i]->full = 0;
 		philo[i]->last_eat = info->time;
 		philo[i]->time = info->time;
+		philo[i]->fork_right = info->fork[i];
 		if (i != info->nb_philo)
 			philo[i]->fork_left = info->fork[i + 1];
 		else
 			philo[i]->fork_left = info->fork[0];
-		i++;
 		philo[i]->message = info->message;
-	}
 }
 
 int		set_info(t_info *info)
@@ -37,7 +43,7 @@ int		set_info(t_info *info)
 	else
 		info->nb_eat_max = -1;
 	if (!info->nb_philo || !info->t_die || !info->t_eat
-	|| !info->t_sleep || !info->nb_eat-Max)
+	|| !info->t_sleep || !info->nb_eat_max)
 		return (ft_error(info, "Error: bad arguments \n"));
 	return (0);
 }
@@ -60,6 +66,7 @@ t_info	*malloc_info(int ac, char **av)
 	info->nb_eat_max = 0;
 	info->philo = NULL;
 	info->message = NULL;
-	info->end = NULL;
+	//info->end = NULL;
+	info->fork = NULL;
 	return (info);
 }
