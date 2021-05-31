@@ -6,7 +6,7 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:51:07 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/05/31 20:26:27 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/05/31 23:05:10 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ t_info			*malloc_info(int ac, char **av)
 	info->t_sleep = 0;
 	info->nb_eat_max = 0;
 	info->philo = NULL;
-	//info->end = NULL;
 	info->fork = NULL;
 	return (info);
 }

@@ -6,7 +6,7 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:51:01 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/05/30 23:40:29 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/05/31 23:40:24 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_philosopher	philo_eat(t_philosopher philo, t_philosopher *point)
 	pthread_mutex_unlock(philo.fork_right);
 	pthread_mutex_unlock(philo.fork_left);
 	point->nb_eat++;
-	if (philo.nb_eat != 1 && philo.nb_eat >= philo.nb_eat_max)
+	if (point->nb_eat != 1 && point->nb_eat >= point->nb_eat_max)
 		point->full = 1;
 	return (philo);
 }
