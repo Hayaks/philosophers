@@ -6,7 +6,7 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:50:50 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/05/31 00:10:52 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/05/31 20:45:54 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,19 @@ void    *monitor(t_info *info)
 			}
 			if (info->philo[i].full == 1)
 				full_all++;
+            if (full_all == info->nb_philo
+            && info->nb_eat_max != -1)
+		    {
+			    message_end_eat(info);
+			    return (NULL);
+		    }
             i++;
 		}
-        if (full_all == info->nb_philo)
+        if (full_all == info->nb_philo
+        && info->nb_eat_max != -1)
 		{
-			message_end_eat(info);
-			return (NULL);
+		    message_end_eat(info);
+		    return (NULL);
 		}
 		usleep(1000);
 	}

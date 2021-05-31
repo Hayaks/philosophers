@@ -6,7 +6,7 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:51:18 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/05/30 22:51:20 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/05/31 20:29:28 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	message_end_eat(t_info *info)
 {
 	pthread_mutex_lock(&info->message);
 	printf("end of simulation\n");
-	pthread_mutex_unlock(&info->message);
 }
 
 void	message_philo(t_philosopher philo, char *str)

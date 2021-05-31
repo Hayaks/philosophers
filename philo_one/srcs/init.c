@@ -6,7 +6,7 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:51:07 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/05/31 00:11:44 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/05/31 20:26:27 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_philosopher	set_philo(t_info *info, int i)
 	philo.last_eat = info->time;
 	philo.time = info->time;
 	philo.fork_right = &info->fork[i];
-	if (i != info->nb_philo)
+	if (philo.id != info->nb_philo)
 		philo.fork_left = &info->fork[i + 1];
 	else
 		philo.fork_left = &info->fork[0];
