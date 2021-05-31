@@ -47,7 +47,6 @@ typedef struct	s_info
 	int				nb_eat_max;
 	t_philosopher	*philo;
 	pthread_mutex_t	message;
-	//pthread_mutex_t	end;
 	pthread_mutex_t	*fork;
 }				t_info;
 

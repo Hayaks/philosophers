@@ -27,10 +27,10 @@ t_philosopher	philo_eat(t_philosopher philo, t_philosopher *point)
 	message_philo(philo, "as taken a fork");
 	message_philo(philo, "is eating");
 	point->last_eat = actual_time();
-	point->nb_eat++;
 	usleep(philo.t_eat * 1000);
 	pthread_mutex_unlock(philo.fork_right);
 	pthread_mutex_unlock(philo.fork_left);
+	point->nb_eat++;
 	if (philo.nb_eat != 1 && philo.nb_eat >= philo.nb_eat_max)
 		point->full = 1;
 	return (philo);
