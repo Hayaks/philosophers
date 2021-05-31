@@ -12,7 +12,7 @@
 
 #include "../includes/philo.h"
 
-void    monitor(t_info *info)
+void    *monitor(t_info *info)
 {
 	int     end;
     int		full_all;
@@ -28,13 +28,19 @@ void    monitor(t_info *info)
 		while (i < info->nb_philo)
 		{
 			if ((int)(time - info->philo[i].last_eat) > info->t_die)
-				return (handle_death(info, info->philo[i]));
-			if (info->philo[i]->full_all == 1)
+			{
+				message_philo(info->philo[i], "died");
+				end = 1;
+			}
+			if (info->philo[i].full == 1)
 				full_all++;
             i++;
 		}
         if (full_all == info->nb_philo)
-				return (handle_end_meal(info));
+		{
+			message_end_eat(info);
+			end = 1;
+		}
 		usleep(1000);
 	}
 	return (NULL);
@@ -49,7 +55,7 @@ int	    set_thread(t_info *info)
 	while (i < info->nb_philo)
 	{
 		usleep(50);
-        set_philo(info, philo, i);
+        info->philo[i] = set_philo(info, i);
 		if (pthread_create(&id, NULL, &philo_life, &info->philo[i]))
 			return (1);
 		pthread_detach(id);
@@ -59,7 +65,7 @@ int	    set_thread(t_info *info)
 	while (i < info->nb_philo)
 	{
 		usleep(50);
-        set_philo(info, philo, i);
+        info->philo[i] = set_philo(info, i);
 		if (pthread_create(&id, NULL, &philo_life, &info->philo[i]))
 			return (1);
 		pthread_detach(id);
@@ -79,10 +85,10 @@ int	    set_mutex(t_info *info)
 	i = 0;
 	if (pthread_mutex_init(&info->message, NULL))
 		return (1);
-	if (pthread_mutex_init(&info->end, NULL))
+	/*if (pthread_mutex_init(&info->end, NULL))
 		return (1);
-	pthread_mutex_lock(&info->end);
-	info->fork = (info->fork*)malloc(sizeof(info->fork) * info->nb_philo);
+	pthread_mutex_lock(&info->end);*/
+	info->fork = (pthread_mutex_t*)malloc(sizeof(info->fork) * info->nb_philo);
 	if (!info->fork)
 		return (ft_error(info, "Error: malloc des fourchettes \n"));
 	while (i < info->nb_philo)
@@ -108,7 +114,7 @@ int	    main(int ac, char **av)
 		return (1);
 	if (set_mutex(info))
 		return (ft_error(info, "Error: Mutex \n"));
-    info->philo = (info->philo*)malloc(sizeof(info->philo) * info->nb_philo);
+    info->philo = (t_philosopher*)malloc(sizeof(info->philo) * info->nb_philo);
 	if (!info->philo)
 		return (ft_error(info, "Error: malloc des philosophes \n"));
 	//set_philo(info, philo, i);

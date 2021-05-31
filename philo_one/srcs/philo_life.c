@@ -12,35 +12,39 @@
 
 #include "../includes/philo.h"
 
-void	philo_sleep_and_think(t_philosopher *philo)
+void			philo_sleep_and_think(t_philosopher philo)
 {
 	message_philo(philo, "is sleeping");
-	usleep(philo->t_sleep * 1000);
+	usleep(philo.t_sleep * 1000);
 	message_philo(philo, "is thinking");
 }
 
-void	philo_eat(t_philosopher *philo)
+t_philosopher	philo_eat(t_philosopher philo, t_philosopher *point)
 {
-	pthread_mutex_lock(philo->fork_right);
+	pthread_mutex_lock(philo.fork_right);
 	message_philo(philo, "as taken a fork");
-	pthread_mutex_lock(philo->fork_left);
+	pthread_mutex_lock(philo.fork_left);
 	message_philo(philo, "as taken a fork");
 	message_philo(philo, "is eating");
-	philo->last_eat = actual_time();
-	philo->nb_eat++;
-	usleep(philo->t_eat * 1000);
-	pthread_mutex_unlock(philo->fork_right);
-	pthread_mutex_unlock(philo->fork_left);
-	if (philo->nb_eat != 1 && philo->nb_eat >= philo->nb_eat_max)
-		philo->full = 1;
+	point->last_eat = actual_time();
+	point->nb_eat++;
+	usleep(philo.t_eat * 1000);
+	pthread_mutex_unlock(philo.fork_right);
+	pthread_mutex_unlock(philo.fork_left);
+	if (philo.nb_eat != 1 && philo.nb_eat >= philo.nb_eat_max)
+		point->full = 1;
+	return (philo);
 }
 
-void	philo_life(void *philo)
+void			*philo_life(void *philo)
 {
+	t_philosopher	*tmp;
+
+	tmp = philo;
 	while (1)
 	{
-		philo_eat(philo);
-		philo_sleep_and_think(philo);
+		philo_eat(*tmp, tmp);
+		philo_sleep_and_think(*tmp);
 	}
 	return (NULL);
 }

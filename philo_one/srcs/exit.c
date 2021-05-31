@@ -17,11 +17,10 @@ void	destroy_all_mutex(t_info *info)
 	int	i;
 
 	i = 0;
-	pthread_mutex_destroy(info->message);
-	pthread_mutex_destroy(info->end);
-	while (i < arg.nb_philo)
+	pthread_mutex_destroy(&info->message);
+	while (i < info->nb_philo)
 	{
-		pthread_mutex_destroy(info->fork[i]);
+		pthread_mutex_destroy(&info->fork[i]);
 		i++;
 	}
 }
