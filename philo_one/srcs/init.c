@@ -6,7 +6,7 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:51:07 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/06/01 17:40:56 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/06/01 22:23:37 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_philo	set_philo(t_info *info, int i)
 	t_philo	philo;
 
 	philo.id = i + 1;
-	philo.t_die = info->t_die;
 	philo.t_eat = info->t_eat;
 	philo.t_sleep = info->t_sleep;
 	philo.nb_eat = 0;
