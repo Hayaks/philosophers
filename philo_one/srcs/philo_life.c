@@ -6,20 +6,20 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:51:01 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/05/31 23:40:24 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/06/01 17:40:46 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void			philo_sleep_and_think(t_philosopher philo)
+void	philo_sleep_and_think(t_philo philo)
 {
 	message_philo(philo, "is sleeping");
 	usleep(philo.t_sleep * 1000);
 	message_philo(philo, "is thinking");
 }
 
-t_philosopher	philo_eat(t_philosopher philo, t_philosopher *point)
+t_philo	philo_eat(t_philo philo, t_philo *point)
 {
 	pthread_mutex_lock(philo.fork_right);
 	message_philo(philo, "as taken a fork");
@@ -36,9 +36,9 @@ t_philosopher	philo_eat(t_philosopher philo, t_philosopher *point)
 	return (philo);
 }
 
-void			*philo_life(void *philo)
+void	*philo_life(void *philo)
 {
-	t_philosopher	*tmp;
+	t_philo	*tmp;
 
 	tmp = philo;
 	while (1)

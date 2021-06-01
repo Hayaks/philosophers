@@ -6,15 +6,15 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:51:07 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/05/31 23:05:10 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/06/01 17:40:56 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-t_philosopher	set_philo(t_info *info, int i)
+t_philo	set_philo(t_info *info, int i)
 {
-	t_philosopher philo;
+	t_philo	philo;
 
 	philo.id = i + 1;
 	philo.t_die = info->t_die;
@@ -34,7 +34,7 @@ t_philosopher	set_philo(t_info *info, int i)
 	return (philo);
 }
 
-int				set_info(t_info *info)
+int		set_info(t_info *info)
 {
 	info->time = actual_time();
 	info->nb_philo = ft_atoi(info->av[1]);
@@ -51,7 +51,7 @@ int				set_info(t_info *info)
 	return (0);
 }
 
-t_info			*malloc_info(int ac, char **av)
+t_info	*malloc_info(int ac, char **av)
 {
 	t_info    *info;
 

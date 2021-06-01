@@ -6,7 +6,7 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:50:50 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/05/31 20:45:54 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/06/01 17:40:33 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void    *monitor(t_info *info)
 	return (NULL);
 }
 
-int	    set_thread(t_info *info)
+int     set_thread(t_info *info)
 {
 	pthread_t	id;
 	int			i;
@@ -81,7 +81,7 @@ int	    set_thread(t_info *info)
 	return (0);
 }
 
-int	    set_mutex(t_info *info)
+int     set_mutex(t_info *info)
 {
 	int	i;
 
@@ -100,7 +100,7 @@ int	    set_mutex(t_info *info)
 	return (0);
 }
 
-int	    main(int ac, char **av)
+int     main(int ac, char **av)
 {
 	t_info    *info;
 
@@ -114,7 +114,7 @@ int	    main(int ac, char **av)
 		return (1);
 	if (set_mutex(info))
 		return (ft_error(info, "Error: Mutex \n"));
-    info->philo = (t_philosopher *)malloc(sizeof(t_philosopher) * info->nb_philo);
+    info->philo = (t_philo *)malloc(sizeof(t_philo) * info->nb_philo);
 	if (!info->philo)
 		return (ft_error(info, "Error: malloc des philosophes \n"));
 	if (set_thread(info))

@@ -6,7 +6,7 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:51:10 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/05/30 22:51:11 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/06/01 17:04:11 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	ft_nb_size(int nb)
 	return (size + 1);
 }
 
-static	int	ft_nombre(int nbr, int nb)
+static int	ft_nombre(int nbr, int nb)
 {
 	if (nbr < 0)
 		nb = nbr * -1;
@@ -61,7 +61,7 @@ char		*ft_itoa(int nbr)
 	return (str);
 }
 
-int		ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
 	int		i;
 	int		nb;
@@ -76,7 +76,7 @@ int		ft_atoi(const char *str)
 	return (nb);
 }
 
-size_t	ft_strlen(const char *str)
+size_t		ft_strlen(const char *str)
 {
 	size_t i;
 
