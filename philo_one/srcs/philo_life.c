@@ -6,16 +6,25 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:51:01 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/06/01 17:40:46 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/06/01 18:00:35 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
+void	low_sleep(long time)
+{
+	long	wait;
+
+	wait = actual_time() + time;
+	while (actual_time() < wait)
+		usleep(time);
+}
+
 void	philo_sleep_and_think(t_philo philo)
 {
 	message_philo(philo, "is sleeping");
-	usleep(philo.t_sleep * 1000);
+	low_sleep(philo.t_sleep);
 	message_philo(philo, "is thinking");
 }
 
@@ -27,7 +36,7 @@ t_philo	philo_eat(t_philo philo, t_philo *point)
 	message_philo(philo, "as taken a fork");
 	message_philo(philo, "is eating");
 	point->last_eat = actual_time();
-	usleep(philo.t_eat * 1000);
+	low_sleep(philo.t_eat);
 	pthread_mutex_unlock(philo.fork_right);
 	pthread_mutex_unlock(philo.fork_left);
 	point->nb_eat++;

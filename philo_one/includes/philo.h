@@ -6,7 +6,7 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:51:32 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/06/01 17:02:10 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/06/01 18:00:57 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,5 @@ void			message_end_eat(t_info *info);
 void			*philo_life(void *philo);
 t_philo			philo_eat(t_philo philo, t_philo *point);
 void			philo_sleep_and_think(t_philo philo);
+void			low_sleep(long time);
 #endif

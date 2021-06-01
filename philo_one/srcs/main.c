@@ -6,7 +6,7 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:50:50 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/06/01 17:40:33 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/06/01 18:27:43 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,10 @@ int     set_thread(t_info *info)
 			return (1);
 		pthread_detach(id);
 		i = i + 2;
-		usleep(50);
+		usleep(100);
 	}
 	i = 1;
-	usleep(50);
+	usleep(100);
 	while (i < info->nb_philo)
 	{
         info->philo[i] = set_philo(info, i);
@@ -75,7 +75,7 @@ int     set_thread(t_info *info)
 			return (1);
 		pthread_detach(id);
 		i = i + 2;
-		usleep(50);
+		usleep(100);
 	}
     monitor(info);
 	return (0);
