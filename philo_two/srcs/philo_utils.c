@@ -2,7 +2,7 @@
 
 void	*message_end_eat(t_info *info)
 {
-	sem_wait(&info->message);
+	sem_wait(info->message);
 	printf("end of simulation\n");
 	return (NULL);
 }
