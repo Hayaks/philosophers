@@ -8,6 +8,7 @@
 # include <pthread.h>
 # include <sys/time.h>
 # include <semaphore.h>
+# include <fcntl.h>
 
 typedef struct	s_philo
 {
@@ -21,7 +22,7 @@ typedef struct	s_philo
 	long			last_eat;
 	long			time;
 	sem_t			*fork;
-	set_t			*message;
+	sem_t			*message;
 }				t_philo;
 
 typedef struct	s_info
@@ -35,7 +36,7 @@ typedef struct	s_info
 	int				t_sleep;
 	int				nb_eat_max;
 	t_philo			*philo;
-	sem_t			message;
+	sem_t			*message;
 	sem_t			*fork;
 }				t_info;
 
@@ -50,7 +51,7 @@ size_t			ft_strlen(const char *str);
 char			*ft_itoa(int nbr);
 int				ft_error(t_info *info, char *str);
 void			free_push(t_info *info);
-void			destroy_all_mutex(t_info *info);
+void			destroy_all_sem(t_info *info);
 long			actual_time(void);
 void			message_philo(t_philo philo, char *str);
 void			*message_end_eat(t_info *info);

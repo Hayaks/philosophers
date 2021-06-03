@@ -10,6 +10,7 @@ FOLDER			= $(addprefix srcs/, $(SRCS))
 OBJS			= $(FOLDER:c=o)
 
 CC				= clang
+MAC				= gcc
 CFLAGS 			= -pthread -Wall -Wextra -Werror
 FSAN			= -g3 -fsanitize=address
 RM				= rm -f
@@ -21,6 +22,9 @@ all:			$(NAME)
 
 $(NAME):		$(OBJS)
 				$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+
+macos:			$(OBJS)
+				$(MAC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 fsan:			$(OBJS)
 				$(CC) $(CFLAGS) $(FSAN) -o $(NAME) $(OBJS)

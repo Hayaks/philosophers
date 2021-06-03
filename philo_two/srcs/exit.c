@@ -1,24 +1,17 @@
 #include "../includes/philo.h"
 
-void	destroy_all_mutex(t_info *info)
+void	destroy_all_sem(t_info *info)
 {
-	int	i;
-
-	i = 0;
-	pthread_mutex_destroy(&info->message);
-	while (i < info->nb_philo)
-	{
-		pthread_mutex_destroy(&info->fork[i]);
-		i++;
-	}
+	sem_close(info->fork);
+	sem_close(info->message);
+	sem_unlink("fork");
+	sem_unlink("message");
 }
 
 void	free_push(t_info *info)
 {
 	if (info->philo)
 		free(info->philo);
-	if (info->fork)
-		free(info->fork);
 	if (info)
 		free(info);
 }

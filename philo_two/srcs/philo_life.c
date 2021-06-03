@@ -18,15 +18,13 @@ void	philo_sleep_and_think(t_philo philo)
 
 t_philo	philo_eat(t_philo philo, t_philo *point)
 {
-	pthread_mutex_lock(philo.fork_right);
+	sem_wait(philo.fork);
 	message_philo(philo, "as taken a fork");
-	pthread_mutex_lock(philo.fork_left);
 	message_philo(philo, "as taken a fork");
 	message_philo(philo, "is eating");
 	point->last_eat = actual_time();
 	low_sleep(philo.t_eat);
-	pthread_mutex_unlock(philo.fork_right);
-	pthread_mutex_unlock(philo.fork_left);
+	sem_post(philo.fork);
 	point->nb_eat++;
 	if (point->nb_eat != 1 && point->nb_eat >= point->nb_eat_max)
 		point->full = 1;

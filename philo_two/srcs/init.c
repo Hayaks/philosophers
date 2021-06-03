@@ -12,12 +12,8 @@ t_philo	set_philo(t_info *info, int i)
 	philo.full = 0;
 	philo.last_eat = info->time;
 	philo.time = info->time;
-	philo.fork_right = &info->fork[i];
-	if (philo.id != info->nb_philo)
-		philo.fork_left = &info->fork[i + 1];
-	else
-		philo.fork_left = &info->fork[0];
-	philo.message = &info->message;
+	philo.fork = info->fork;
+	philo.message = info->message;
 	return (philo);
 }
 
@@ -35,6 +31,12 @@ int		set_info(t_info *info)
 	if (!info->nb_philo || !info->t_die || !info->t_eat
 	|| !info->t_sleep || !info->nb_eat_max)
 		return (ft_error(info, "Error: bad arguments \n"));
+	sem_unlink("message");
+	info->message = sem_open("message", O_CREAT, S_IRWXU, 1);
+	sem_unlink("fork");
+	info->fork = sem_open("fork", O_CREAT, S_IRWXU, info->nb_philo / 2);
+	if (!info->fork)
+		return (ft_error(info, "Error: semaphore \n"));
 	return (0);
 }
 

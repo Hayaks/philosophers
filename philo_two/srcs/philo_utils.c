@@ -2,16 +2,16 @@
 
 void	*message_end_eat(t_info *info)
 {
-	pthread_mutex_lock(&info->message);
+	sem_wait(&info->message);
 	printf("end of simulation\n");
 	return (NULL);
 }
 
 void	message_philo(t_philo philo, char *str)
 {
-	pthread_mutex_lock(philo.message);
+	sem_wait(philo.message);
 	printf("%ld %d %s\n", (actual_time() - philo.time), philo.id, str);
-	pthread_mutex_unlock(philo.message);
+	sem_post(philo.message);
 }
 
 long	actual_time(void)
