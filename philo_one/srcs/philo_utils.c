@@ -12,10 +12,11 @@
 
 #include "../includes/philo.h"
 
-void	message_end_eat(t_info *info)
+void	*message_end_eat(t_info *info)
 {
 	pthread_mutex_lock(&info->message);
 	printf("end of simulation\n");
+	return (NULL);
 }
 
 void	message_philo(t_philo philo, char *str)

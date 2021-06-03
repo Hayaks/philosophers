@@ -32,23 +32,13 @@ void    *monitor(t_info *info)
 			}
 			if (info->philo[i].full == 1)
 				full_all++;
-            if (full_all == info->nb_philo
-            && info->nb_eat_max != -1)
-		    {
-			    message_end_eat(info);
-			    return (NULL);
-		    }
             i++;
 		}
         if (full_all == info->nb_philo
         && info->nb_eat_max != -1)
-		{
-		    message_end_eat(info);
-		    return (NULL);
-		}
+		    return (message_end_eat(info));
 		usleep(1000);
 	}
-	return (NULL);
 }
 
 int     set_thread(t_info *info)

@@ -64,7 +64,7 @@ void			free_push(t_info *info);
 void			destroy_all_mutex(t_info *info);
 long			actual_time(void);
 void			message_philo(t_philo philo, char *str);
-void			message_end_eat(t_info *info);
+void			*message_end_eat(t_info *info);
 void			*philo_life(void *philo);
 t_philo			philo_eat(t_philo philo, t_philo *point);
 void			philo_sleep_and_think(t_philo philo);
