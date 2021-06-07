@@ -6,7 +6,7 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:51:32 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/06/01 18:00:57 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/06/07 17:10:20 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <pthread.h>
 # include <sys/time.h>
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	int				id;
 	int				t_die;
@@ -35,7 +35,7 @@ typedef struct	s_philo
 	pthread_mutex_t	*message;
 }				t_philo;
 
-typedef struct	s_info
+typedef struct s_info
 {
 	int				ac;
 	char			**av;

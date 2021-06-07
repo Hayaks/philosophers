@@ -6,7 +6,7 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:50:54 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/06/04 16:27:51 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/06/07 14:26:54 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	free_push(t_info *info)
 	info = NULL;
 }
 
-int		ft_error(t_info *info, char *str)
+int	ft_error(t_info *info, char *str)
 {
 	free_push(info);
 	write(2, str, ft_strlen(str));

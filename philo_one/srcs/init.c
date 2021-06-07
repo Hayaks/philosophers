@@ -6,7 +6,7 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:51:07 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/06/01 22:23:37 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/06/07 14:58:34 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_philo	set_philo(t_info *info, int i)
 	return (philo);
 }
 
-int		set_info(t_info *info)
+int	set_info(t_info *info)
 {
 	info->time = actual_time();
 	info->nb_philo = ft_atoi(info->av[1]);
@@ -45,19 +45,19 @@ int		set_info(t_info *info)
 	else
 		info->nb_eat_max = -1;
 	if (!info->nb_philo || !info->t_die || !info->t_eat
-	|| !info->t_sleep || !info->nb_eat_max)
+		|| !info->t_sleep || !info->nb_eat_max)
 		return (ft_error(info, "Error: bad arguments \n"));
 	return (0);
 }
 
 t_info	*malloc_info(int ac, char **av)
 {
-	t_info    *info;
+	t_info	*info;
 
 	info = NULL;
-	info = (t_info*)malloc(sizeof(t_info));
+	info = (t_info *)malloc(sizeof(t_info));
 	if (!info)
-		return NULL;
+		return (NULL);
 	info->ac = ac;
 	info->av = av;
 	info->time = 0;

@@ -6,22 +6,22 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:50:50 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/06/01 23:00:54 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/06/07 17:09:35 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philo.h"
 
-void    *monitor(t_info *info)
+void	*monitor(t_info *info)
 {
-    int		full_all;
-	long    time;
-    int		i;
+	int		full_all;
+	long	time;
+	int		i;
 
 	while (1)
 	{
-        full_all = 0;
-        time = actual_time();
+		full_all = 0;
+		time = actual_time();
 		i = 0;
 		while (i < info->nb_philo)
 		{
@@ -32,16 +32,16 @@ void    *monitor(t_info *info)
 			}
 			if (info->philo[i].full == 1)
 				full_all++;
-            i++;
+			i++;
 		}
-        if (full_all == info->nb_philo
-        && info->nb_eat_max != -1)
-		    return (message_end_eat(info));
+		if (full_all == info->nb_philo
+			&& info->nb_eat_max != -1)
+			return (message_end_eat(info));
 		usleep(1000);
 	}
 }
 
-int     set_thread(t_info *info)
+int	set_thread(t_info *info)
 {
 	pthread_t	id;
 	int			i;
@@ -49,7 +49,7 @@ int     set_thread(t_info *info)
 	i = 0;
 	while (i < info->nb_philo)
 	{
-        info->philo[i] = set_philo(info, i);
+		info->philo[i] = set_philo(info, i);
 		if (pthread_create(&id, NULL, &philo_life, &info->philo[i]))
 			return (1);
 		pthread_detach(id);
@@ -57,28 +57,29 @@ int     set_thread(t_info *info)
 		usleep(50);
 	}
 	i = 1;
-    usleep(50);
+	usleep(50);
 	while (i < info->nb_philo)
 	{
-        info->philo[i] = set_philo(info, i);
+		info->philo[i] = set_philo(info, i);
 		if (pthread_create(&id, NULL, &philo_life, &info->philo[i]))
 			return (1);
 		pthread_detach(id);
 		i = i + 2;
 		usleep(50);
 	}
-    monitor(info);
 	return (0);
 }
 
-int     set_mutex(t_info *info)
+int	set_mutex(t_info *info)
 {
 	int	i;
+	int	nb;
 
 	i = 0;
+	nb = info->nb_philo;
 	if (pthread_mutex_init(&info->message, NULL))
 		return (1);
-	info->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * info->nb_philo);
+	info->fork = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) * nb);
 	if (!info->fork)
 		return (ft_error(info, "Error: malloc des fourchettes \n"));
 	while (i < info->nb_philo)
@@ -90,9 +91,9 @@ int     set_mutex(t_info *info)
 	return (0);
 }
 
-int     main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_info    *info;
+	t_info	*info;
 
 	info = NULL;
 	info = malloc_info(ac, av);
@@ -104,11 +105,12 @@ int     main(int ac, char **av)
 		return (1);
 	if (set_mutex(info))
 		return (ft_error(info, "Error: Mutex \n"));
-    info->philo = (t_philo *)malloc(sizeof(t_philo) * info->nb_philo);
+	info->philo = (t_philo *)malloc(sizeof(t_philo) * info->nb_philo);
 	if (!info->philo)
 		return (ft_error(info, "Error: malloc des philosophes \n"));
 	if (set_thread(info))
 		return (ft_error(info, "Error: Thread \n"));
-    destroy_all_mutex(info);
+	monitor(info);
+	destroy_all_mutex(info);
 	free_push(info);
 }
