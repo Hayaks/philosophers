@@ -6,7 +6,7 @@
 /*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/30 22:50:54 by jsaguez           #+#    #+#             */
-/*   Updated: 2021/06/01 17:08:10 by jsaguez          ###   ########.fr       */
+/*   Updated: 2021/06/04 16:27:51 by jsaguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,15 @@ void	destroy_all_mutex(t_info *info)
 
 void	free_push(t_info *info)
 {
-	if (info->philo)
-		free(info->philo);
 	if (info->fork)
 		free(info->fork);
+	info->fork = NULL;
+	if (info->philo)
+		free(info->philo);
+	info->philo = NULL;
 	if (info)
 		free(info);
+	info = NULL;
 }
 
 int		ft_error(t_info *info, char *str)

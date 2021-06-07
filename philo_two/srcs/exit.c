@@ -12,8 +12,10 @@ void	free_push(t_info *info)
 {
 	if (info->philo)
 		free(info->philo);
+	info->philo = NULL;
 	if (info)
 		free(info);
+	info = NULL;
 }
 
 int		ft_error(t_info *info, char *str)
