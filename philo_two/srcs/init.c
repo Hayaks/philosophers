@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/07 18:18:49 by jsaguez           #+#    #+#             */
+/*   Updated: 2021/06/07 18:37:32 by jsaguez          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
 t_philo	set_philo(t_info *info, int i)
@@ -17,7 +29,7 @@ t_philo	set_philo(t_info *info, int i)
 	return (philo);
 }
 
-int		set_info(t_info *info)
+int	set_info(t_info *info)
 {
 	info->time = actual_time();
 	info->nb_philo = ft_atoi(info->av[1]);
@@ -29,7 +41,7 @@ int		set_info(t_info *info)
 	else
 		info->nb_eat_max = -1;
 	if (!info->nb_philo || !info->t_die || !info->t_eat
-	|| !info->t_sleep || !info->nb_eat_max)
+		|| !info->t_sleep || !info->nb_eat_max)
 		return (ft_error(info, "Error: bad arguments \n"));
 	sem_unlink("message");
 	info->message = sem_open("message", O_CREAT, S_IRWXU, 1);
@@ -42,12 +54,12 @@ int		set_info(t_info *info)
 
 t_info	*malloc_info(int ac, char **av)
 {
-	t_info    *info;
+	t_info	*info;
 
 	info = NULL;
-	info = (t_info*)malloc(sizeof(t_info));
+	info = (t_info *)malloc(sizeof(t_info));
 	if (!info)
-		return NULL;
+		return (NULL);
 	info->ac = ac;
 	info->av = av;
 	info->time = 0;

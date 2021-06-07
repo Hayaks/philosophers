@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/07 18:18:23 by jsaguez           #+#    #+#             */
+/*   Updated: 2021/06/07 18:18:24 by jsaguez          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/philo.h"
 
 static int	ft_nb_size(int nb)
@@ -22,7 +34,7 @@ static int	ft_nombre(int nbr, int nb)
 	return (nb);
 }
 
-char		*ft_itoa(int nbr)
+char	*ft_itoa(int nbr)
 {
 	char	*str;
 	int		nb;
@@ -33,10 +45,9 @@ char		*ft_itoa(int nbr)
 	nb = ft_nombre(nbr, nb);
 	index = 0;
 	size = ft_nb_size(nb);
-	if (!(str = malloc(sizeof(*str) * (size + 1 + (nbr < 0 ? 1 : 0)))))
+	str = malloc(sizeof(*str) * (size + 1));
+	if (!str)
 		return (0);
-	if (nbr < 0 && (str[index] = '-'))
-		size++;
 	index = size - 1;
 	while (nb >= 10)
 	{
@@ -49,7 +60,7 @@ char		*ft_itoa(int nbr)
 	return (str);
 }
 
-int			ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int		i;
 	int		nb;
@@ -64,9 +75,9 @@ int			ft_atoi(const char *str)
 	return (nb);
 }
 
-size_t		ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])

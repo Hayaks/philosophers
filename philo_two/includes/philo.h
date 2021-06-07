@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsaguez <jsaguez@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/07 18:34:03 by jsaguez           #+#    #+#             */
+/*   Updated: 2021/06/07 18:34:23 by jsaguez          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
@@ -10,7 +21,7 @@
 # include <semaphore.h>
 # include <fcntl.h>
 
-typedef struct	s_philo
+typedef struct s_philo
 {
 	int				id;
 	int				t_die;
@@ -25,7 +36,7 @@ typedef struct	s_philo
 	sem_t			*message;
 }				t_philo;
 
-typedef struct	s_info
+typedef struct s_info
 {
 	int				ac;
 	char			**av;
